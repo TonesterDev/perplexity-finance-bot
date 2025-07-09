@@ -2,7 +2,7 @@
   nixPkgs = ['nodejs_18', 'chromium']
 
 [phases.install]
-  cmds = ['npm ci']
+  cmds = ['PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true npm ci']
 
 [phases.build]
   cmds = ['echo "Build complete"']
@@ -12,4 +12,4 @@
 
 [variables]
   PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = 'true'
-  PUPPETEER_EXECUTABLE_PATH = '/nix/store/$(nix eval --raw nixpkgs#chromium.outPath)/bin/chromium'
+  PUPPETEER_EXECUTABLE_PATH = '/nix/store/*/bin/chromium'
